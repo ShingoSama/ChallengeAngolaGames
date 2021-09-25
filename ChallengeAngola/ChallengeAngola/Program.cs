@@ -10,7 +10,7 @@ namespace ChallengeAngola
             Console.WriteLine("Hello World!");
             var original = new List<int>{-1, -2, 0, 1 };
             var filtered = original.FilterCollection<int>(x=>x>0);
-            foreach (var item in filtered)
+            foreach (var item in filtered.Value)
             {
                 Console.WriteLine(item);
             }

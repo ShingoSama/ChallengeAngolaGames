@@ -6,21 +6,18 @@ namespace ChallengeAngola
 {
     public static class CollectionExtension
     {
-        public static IList<T> FilterCollection<T>(this IList<T> originalCollection, Func<T, bool> predicate)
+        public static Lazy<IList<T>> FilterCollection<T>(this IList<T> originalCollection, Func<T, bool> predicate)
         {
-            var filtered = new List<T>();
+            var filtered = new Lazy<IList<T>>(()=>new List<T>());
             for (int i = 0; i < originalCollection.Count; i++)
             {
                 if (predicate != null)
                 {
                     if (predicate(originalCollection[i]))
                     {
-
-                        filtered.Add(originalCollection[i]);
-
+                        filtered.Value.Add(originalCollection[i]);
                     }
                 }
-                
             }
             return filtered;
         }
